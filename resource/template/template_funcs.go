@@ -51,6 +51,7 @@ func newFuncMap() map[string]interface{} {
 	m["mul"] = func(a, b int) int { return a * b }
 	m["seq"] = Seq
 	m["atoi"] = strconv.Atoi
+	m["getServiceIp"] = GetServieIp
 	return m
 }
 
@@ -236,4 +237,30 @@ func Base64Encode(data string) string {
 func Base64Decode(data string) (string, error) {
 	s, err := base64.StdEncoding.DecodeString(data)
 	return string(s), err
+}
+
+// 获取服务器ip方法，不适用于有多个非环回地址的场景
+func GetServieIp() string {
+	netInterfaces, err := net.Interfaces()
+	if err != nil {
+		fmt.Println("net.Interfaces failed, err:", err.Error())
+	}
+
+	var ip string
+Loop:
+	for i := 0; i < len(netInterfaces); i++ {
+		if (netInterfaces[i].Flags & net.FlagUp) != 0 {
+			addrs, _ := netInterfaces[i].Addrs()
+
+			for _, address := range addrs {
+				if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+					if ipnet.IP.To4() != nil {
+						ip = ipnet.IP.String()
+						break Loop
+					}
+				}
+			}
+		}
+	}
+	return ip
 }
