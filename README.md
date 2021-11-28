@@ -1,4 +1,4 @@
-# ###
+# Update
 * forked from kelseyhightower/confd
 * 新增模板方法{{getServiceIp}}，获取服务器ip。
 * 此方法并不完整，`只能`获取一个非环回地址ip。
