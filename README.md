@@ -1,9 +1,8 @@
 # Update
-* forked from kelseyhightower/confd
-* 新增模板方法{{getServiceIp}}，获取服务器ip。
-* 此方法并不完整，`只能`获取一个非环回地址ip。
+* 新增模板方法{{getServiceIp}}，获取服务器IP。
+* 此方法并不完整，`只能`获取一个非环回地址IP，不合适服务器多个IP的场景。
 
-# docker版build amd64-linux版
+# docker build amd64-linux版
 * docker pull golang:1.9-stretch
 * docker run -it --name conf-build -v /你的项目目录/confd:/go/src/github.com/kelseyhightower/confd golang:1.9-stretch /bin/bash
 * 容器内操作 -> cd /go/src/github.com/kelseyhightower/confd && make build && make install && cp /usr/local/bin/confd /go/src/github.com/kelseyhightower/confd/bin
