@@ -4,9 +4,9 @@
 
 # docker build amd64-linux版
 * docker pull golang:1.9-stretch
-* docker run -it --name conf-build -v /你的项目目录/confd:/go/src/github.com/kelseyhightower/confd golang:1.9-stretch /bin/bash
-* 容器内操作 -> cd /go/src/github.com/kelseyhightower/confd && make build && make install && cp /usr/local/bin/confd /go/src/github.com/kelseyhightower/confd/bin
-* 你的“/你的项目目录/confd/bin”内的confd就是你要的文件
+* docker run -it --name conf-build -v /your/path/to/confd:/go/src/github.com/kelseyhightower/confd golang:1.9-stretch /bin/bash
+* 容器内操作: cd /go/src/github.com/kelseyhightower/confd && make build && make install && cp /usr/local/bin/confd /go/src/github.com/kelseyhightower/confd/bin
+* 你的“/your/path/to/confd/bin”内的confd就是你要的文件
 
 # confd
 
