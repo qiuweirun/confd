@@ -6,7 +6,7 @@
 * docker pull golang:1.9-stretch
 * docker run -it --name conf-build -v /your/path/to/confd:/go/src/github.com/kelseyhightower/confd golang:1.9-stretch /bin/bash
 * 容器内操作: cd /go/src/github.com/kelseyhightower/confd && make build && make install && cp /usr/local/bin/confd /go/src/github.com/kelseyhightower/confd/bin
-* 你的“/your/path/to/confd/bin”内的confd就是你要的文件
+* 你的“/your/path/to/confd/bin”内的confd就是二次开发的amd64-linux二进制执行文件
 
 # confd
 
